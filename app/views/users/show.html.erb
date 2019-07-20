@@ -6,15 +6,21 @@
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class='nav navbar-nav navbar-left' >
       <span>Bookers</span>
+    </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-          <li><a> Home</a></li>
-          <li><a> Users</a></li>
-          <li><a> Books</a></li>
-          <li><a> logout</a></li>
+          <li><a class="glyphicon glyphicon-home home" href="/users/5809"> Home</a></li>
+          <li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li>
+          <li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>
+          <li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
       </ul>
     </nav>
+  </div>
+</header>
 
   	<div class='body'>
       <div class='container'>
@@ -24,9 +30,10 @@
 
       	<div class='row'>
   
-  <div>
+  <div class='col-xs-3'>
     <h2>User info</h2>
     <table class='table'>
+      <tr><img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg" alt="No image" /></tr> 
       <tr>
     	  <th>name</th>
     	  <th><%= @user.name %></th>
@@ -36,6 +43,10 @@
     	  <th></th>
       </tr>
 </table>
+
+<div class='row'>
+  <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></a>
+</div>
 
 <h2>Books</h2>
 
@@ -65,7 +76,7 @@
     <%= f.text_field :body %>
   </div>
 
-    <%= f.submit %>
+    <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book">
 
 <% end %>
 

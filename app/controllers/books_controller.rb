@@ -5,4 +5,14 @@ class BooksController < ApplicationController
 
   def index
   end
+
+  def create
+    book = Book.new(book_params)
+    book.save
+    flash[:notice] = "successfully"
+    redirect_to book_path(book.id)
+  end
+
+  def edit
+  end
 end
