@@ -13,10 +13,11 @@
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-          <li><a class="glyphicon glyphicon-home home" href="/users/5809"> Home</a></li>
-          <li><a class="glyphicon glyphicon-user users" href="/users"> Users</a></li>
-          <li><a class="glyphicon glyphicon-book books" href="/books"> Books</a></li>
-          <li><a class="glyphicon glyphicon-log-out logout" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
+          <li>
+          	<%= link_to 'Home', user_path(@user.id),class: "glyphicon glyphicon-home home" %></li>
+          <li><%= link_to 'Users', users_path,class: "glyphicon glyphicon-user users" %></li>
+          <li><%= link_to 'Books', books_path,class: "glyphicon glyphicon-book books" %></li>
+          <li><%= link_to 'logout', destroy_user_session_path, method: :delete,class: "glyphicon glyphicon-log-out logout" %></li>
       </ul>
     </nav>
   </div>
@@ -40,12 +41,14 @@
       </tr>
       <tr>
     	  <th>introduction</th>
-    	  <th></th>
+    	  <th><%= @user.introduction %></th>
       </tr>
 </table>
 
 <div class='row'>
-  <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></a>
+  <%= link_to edit_user_path(@user.id) do %>
+  <i class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench"></i>
+  <%end%>
 </div>
 
 <h2>Books</h2>
@@ -61,6 +64,7 @@
   </thead>
 
   <tbody>
+    
   </tbody>
 </table>
 
@@ -76,7 +80,9 @@
     <%= f.text_field :body %>
   </div>
 
-    <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book">
+    <input type="submit" value="Create Book" class="btn btn-primary col-xs-12">
+
+
 
 <% end %>
 

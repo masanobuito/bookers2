@@ -1,2 +1,28 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h2>User info</h2>
+
+
+
+
+
+    <%= form_for(@user) do |f| %>
+
+    <div class="form-group">
+  	<%= f.label :user, 'Name' %>
+    <%= f.text_field :name %>
+    </div>
+  
+    <div class="form-group">
+    <label>Image</label>
+    </div>
+  
+    <div class="form-group">
+  	<%= f.label :user, 'Introduction' %>
+    <%= f.text_area :introduction, :maxlength => "50" %>
+    </div>
+  
+
+    <%= f.submit %>
+
+
+
+<% end %>
