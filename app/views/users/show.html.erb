@@ -1,59 +1,10 @@
+<%= render 'users/list', user: @user, book: @book %>
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Bookers</title>
-  </head>
+<div class="col-lg-9">
+    <h2>Books</h2>
 
-  <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <nav class='nav navbar-nav navbar-left' >
-      <span>Bookers</span>
-    </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-          <li>
-          	<%= link_to 'Home', user_path(@user.id),class: "glyphicon glyphicon-home home" %></li>
-          <li><%= link_to 'Users', users_path,class: "glyphicon glyphicon-user users" %></li>
-          <li><%= link_to 'Books', books_path,class: "glyphicon glyphicon-book books" %></li>
-          <li><%= link_to 'logout', destroy_user_session_path, method: :delete,class: "glyphicon glyphicon-log-out logout" %></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+    <table class="table table-hover table-inverse">
 
-  	<div class='body'>
-      <div class='container'>
-
-        <p class= "notice"><%= flash[:notice] %></p>
-
-
-      	<div class='row'>
-  
-  <div class='col-xs-3'>
-    <h2>User info</h2>
-    <table class='table'>
-      <tr><img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg" alt="No image" /></tr> 
-      <tr>
-    	  <th>name</th>
-    	  <th><%= @user.name %></th>
-      </tr>
-      <tr>
-    	  <th>introduction</th>
-    	  <th><%= @user.introduction %></th>
-      </tr>
-</table>
-
-<div class='row'>
-  <%= link_to edit_user_path(@user.id) do %>
-  <i class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench"></i>
-  <%end%>
-</div>
-
-<h2>Books</h2>
-
-    <table>
   <thead>
     <tr>
 
@@ -64,29 +15,13 @@
   </thead>
 
   <tbody>
-    
+      <% @books.each do |book| %>
+      <tr>
+      	<td><%= attachment_image_tag @user, :profile_image, size: "40x40", fallback: "no_image.jpg" %></td>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-
-<h2>New book</h2>
-<%= form_for(@book) do |f| %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_field :body %>
-  </div>
-
-    <input type="submit" value="Create Book" class="btn btn-primary col-xs-12">
-
-
-
-<% end %>
-
-
-
-  </body>
-</html>
+</div>
