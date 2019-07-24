@@ -1,4 +1,18 @@
-<%= render 'post_images/list', post_images: @post_images %>
+<% if @book_new.errors.any? %>
+  <div id="error_explanation">
+        <h2><%= @book_new.errors.count %>件のerrorが発生しました</h2>
+        <ul>
+        <% @book_new.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+<%= render 'users/list', user: @user, book: @book_new %>
+
+
+<P class= "notice"><%= flash[:notice] %></P>
 <h1>Users</h1>
 
 <table>
