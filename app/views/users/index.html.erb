@@ -11,11 +11,11 @@
 
 <%= render 'users/list', user: @user, book: @book_new %>
 
-
+<div class= "col-lg-9">
 <P class= "notice"><%= flash[:notice] %></P>
 <h1>Users</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>image</th>
@@ -34,3 +34,4 @@
     <% end %>
   </tbody>
 </table>
+</div>
